@@ -15,7 +15,7 @@ class Permission:
 class Role(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(180))
-    permissions = db.Column(db.Integer)
+    permissions = db.Column(db.String(20))
     users = db.relationship('User',backref = 'role',lazy = 'dynamic')
     @staticmethod
     def insert_roles():
