@@ -21,9 +21,6 @@ class Role(db.Model):
     def insert_roles():
         roles = {
             'EXECUTOR':(Permission.CREATE_TASK | Permission.VERIFY_TASK | Permission.RELEASE_TASK)
-            #'AUDITOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | Permission.CHECK_TASK | Permission.VERIFY_TASK),
-            #'OBSERVER':(Permission.CHECK_TASK)
-            #'ADMIN':(Permission.CREATE_OPERATOR | Permission.APPLICATION_RESOURCE | Permission.CREATE_APPLICATION)
         }
         for r in roles:
             role = Role.query.filter_by(name = r).first()
