@@ -3,10 +3,10 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from app import login_manager
 
 class Permission:
-    CREATE_TASK = '0x01'
-    VERIFY_TASK = '0x02'
-    RELEASE_TASK = '0x04'
-    CHECK_TASK = '0X08'
+    CREATE_TASK = 0x01
+    VERIFY_TASK = 0x02
+    RELEASE_TASK = 0x04
+    CHECK_TASK = 0X08
     #CREATE_OPERATOR = 0X10
     #CHECK_RESOURCE = 0x20
     #APPLICATION_RESOURCE = 0X40
@@ -15,12 +15,14 @@ class Permission:
 class Role(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(180))
-    permissions = db.Column(db.String(20))
+    permissions = db.Column(db.Integer)
     users = db.relationship('User',backref = 'role',lazy = 'dynamic')
     @staticmethod
     def insert_roles():
         roles = {
-            'Exector': (Permission.CREATE_TASK | Permission.VERIFY_TASK | Permission.RELEASE_TASK)
+            'Exector': (Permission.CREATE_TASK |
+             Permission.VERIFY_TASK |
+             Permission.RELEASE_TASK)
         }
         for r in roles:
             role = Role.query.filter_by(name=r).first()
