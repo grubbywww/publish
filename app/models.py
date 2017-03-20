@@ -31,7 +31,7 @@ class Role(db.Model):
                 role = Role(name = r)
             role.permissions = roles[r][0]
             db.session.add(role)
-            db.session.commit()
+        db.session.commit()
 
 class User(db.Model):
     id = db.Column(db.Integer,primary_key = True)
