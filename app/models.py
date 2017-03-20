@@ -20,7 +20,7 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'Exector': Permission.CREATE_TASK|Permission.VERIFY_TASK|Permission.RELEASE_TASK
+            'Exector': (0xff)
         }
         for r in roles:
             role = Role.query.filter_by(name=r).first()
