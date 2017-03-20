@@ -20,13 +20,13 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'Exector': int(Permission.CREATE_TASK|Permission.VERIFY_TASK|Permission.RELEASE_TASK)
+            'Exector': Permission.CREATE_TASK|Permission.VERIFY_TASK|Permission.RELEASE_TASK
         }
         for r in roles:
             role = Role.query.filter_by(name=r).first()
             if role is None:
                 role = Role(name=r)
-            role.permissions = roles[r][0]
+            role.permissions = int(roles[r][0])
             db.session.add(role)
         db.session.commit()
 
