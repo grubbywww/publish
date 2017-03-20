@@ -5,12 +5,12 @@ from app import login_manager
 class Permission:
     CREATE_TASK = 0x01
     VERIFY_TASK = 0x02
-    RELEASE_TASK = 0x03
-    CHECK_TASK = 0X04
-    CREATE_OPERATOR = 0X05
-    CHECK_RESOURCE = 0x06
-    APPLICATION_RESOURCE = 0X07
-    CREATE_APPLICATION = 0x08
+    RELEASE_TASK = 0x04
+    CHECK_TASK = 0X08
+    CREATE_OPERATOR = 0X80
+    CHECK_RESOURCE = 0x16
+    APPLICATION_RESOURCE = 0X32
+    CREATE_APPLICATION = 0x40
 
 class Role(db.Model):
     id = db.Column(db.Integer,primary_key = True)
