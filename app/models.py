@@ -7,10 +7,10 @@ class Permission:
     VERIFY_TASK = 0x02
     RELEASE_TASK = 0x04
     CHECK_TASK = 0X08
-    CREATE_OPERATOR = 0X10
-    CHECK_RESOURCE = 0x20
-    APPLICATION_RESOURCE = 0X40
-    CREATE_APPLICATION = 0x80
+    #CREATE_OPERATOR = 0X10
+    #CHECK_RESOURCE = 0x20
+    #APPLICATION_RESOURCE = 0X40
+    #CREATE_APPLICATION = 0x80
 
 class Role(db.Model):
     id = db.Column(db.Integer,primary_key = True)
@@ -20,10 +20,10 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'EXECUTOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | Permission.CHECK_TASK),
+            'EXECUTOR':(Permission.CREATE_TASK | Permission.VERIFY_TASK | Permission.RELEASE_TASK),
             'AUDITOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | Permission.CHECK_TASK | Permission.VERIFY_TASK),
-            'OBSERVER':(Permission.CHECK_TASK),
-            'ADMIN':(Permission.CREATE_OPERATOR | Permission.APPLICATION_RESOURCE | Permission.CREATE_APPLICATION)
+            'OBSERVER':(Permission.CHECK_TASK)
+            #'ADMIN':(Permission.CREATE_OPERATOR | Permission.APPLICATION_RESOURCE | Permission.CREATE_APPLICATION)
         }
         for r in roles:
             role = Role.query.filter_by(name = r).first()
