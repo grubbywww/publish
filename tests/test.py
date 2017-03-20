@@ -1,7 +1,7 @@
 #! venv/bin/python
 import unittest
 from app import create_app,db
-from app.models import User,Post
+from app.models import User,Post,Role
 from flask import current_app
 import datetime
 class BasicsTestCase(unittest.TestCase):
@@ -31,3 +31,5 @@ class BasicsTestCase(unittest.TestCase):
         for i in c:
             email = i.author.email
         assert email == 'susan@email.com'
+    def test_role(self):
+        Role.insert_roles()

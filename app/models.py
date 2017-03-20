@@ -18,19 +18,20 @@ class Role(db.Model):
     permissions = db.Column(db.Integer)
     users = db.relationship('User',backref = 'role',lazy = 'dynamic')
     @staticmethod
-    roles={
-        'EXECUTOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | CHECK_TASK),
-        'AUDITOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | CHECK_TASK | Permission.VERIFY_TASK),
-        'OBSERVER':(Permission.CHECK_TASK),
-        'ADMIN':(Permission.CREATE_OPERATOR | Permission.APPLICATION_RESOURCE | Permission.CREATE_APPLICATION)
-    }
-    for r in roles:
-        role = Role.query.filter_by(name = r).first()
-        if role is None:
-            role = Role(name = r)
-        role.permissions = roles[r][0]
-        db.session.add(role)
-        db.session.commit()
+    def insert_roles():
+        roles = {
+            'EXECUTOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | CHECK_TASK),
+            'AUDITOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | CHECK_TASK | Permission.VERIFY_TASK),
+            'OBSERVER':(Permission.CHECK_TASK),
+            'ADMIN':(Permission.CREATE_OPERATOR | Permission.APPLICATION_RESOURCE | Permission.CREATE_APPLICATION)
+        }
+        for r in roles:
+            role = Role.query.filter_by(name = r).first()
+            if role is None:
+                role = Role(name = r)
+            role.permissions = roles[r][0]
+            db.session.add(role)
+            db.session.commit()
 
 class User(db.Model):
     id = db.Column(db.Integer,primary_key = True)
