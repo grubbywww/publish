@@ -7,10 +7,10 @@ class Permission:
     VERIFY_TASK = 0x02
     RELEASE_TASK = 0x04
     CHECK_TASK = 0X08
-    CREATE_OPERATOR = 0X80
-    CHECK_RESOURCE = 0x16
-    APPLICATION_RESOURCE = 0X32
-    CREATE_APPLICATION = 0x40
+    CREATE_OPERATOR = 0X10
+    CHECK_RESOURCE = 0x20
+    APPLICATION_RESOURCE = 0X40
+    CREATE_APPLICATION = 0x80
 
 class Role(db.Model):
     id = db.Column(db.Integer,primary_key = True)
