@@ -18,7 +18,7 @@ class Role(db.Model):
     permissions = db.Column(db.Integer)
     users = db.relationship('User',backref = 'role',lazy = 'dynamic')
     @staticmethod
-    roles {
+    roles{
         'EXECUTOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | CHECK_TASK),
         'AUDITOR':(Permission.CREATE_TASK | Permission.RELEASE_TASK | CHECK_TASK | Permission.VERIFY_TASK),
         'OBSERVER':(Permission.CHECK_TASK),
