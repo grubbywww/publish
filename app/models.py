@@ -3,10 +3,10 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from app import login_manager
 
 class Permission:
-    CREATE_TASK = 0x01
-    VERIFY_TASK = 0x02
-    RELEASE_TASK = 0x04
-    CHECK_TASK = 0X08
+    CREATE_TASK = '0x01'
+    VERIFY_TASK = '0x02'
+    RELEASE_TASK = '0x04'
+    CHECK_TASK = '0X08'
     #CREATE_OPERATOR = 0X10
     #CHECK_RESOURCE = 0x20
     #APPLICATION_RESOURCE = 0X40
