@@ -23,9 +23,9 @@ class Role(db.Model):
             'Exector': (Permission.CREATE_TASK | Permission.VERIFY_TASK | Permission.RELEASE_TASK)
         }
         for r in roles:
-            role = Role.query.filter_by(name = r).first()
+            role = Role.query.filter_by(name=r).first()
             if role is None:
-                role = Role(name = r)
+                role = Role(name=r)
             role.permissions = roles[r][0]
             db.session.add(role)
         db.session.commit()
