@@ -2,13 +2,11 @@ from app import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from app import login_manager
 class Role(db.Model):
-    """用户权限"""
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(180))
     permissions = db.Column(db.Integer)
     users = db.relationship('User',backref = 'role',lazy = 'dynamic')
 class User(db.Model):
-    """用户信息"""
     id = db.Column(db.Integer,primary_key = True)
     nickname =db.Column(db.String(120),index = True,unique = True)
     password_hash = db.Column(db.String(128))
