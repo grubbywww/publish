@@ -22,7 +22,7 @@ class UserRoleTestCase(unittest.TestCase):
         #db.drop_all()
         self.app_context.pop()
     def test_role(self):
-        u = User(name = 'susan').query.first()
+        u = User(nickname = 'susan').query.first()
         u.role_id = 2
         db.session.add(u)
         db.session.commit()
