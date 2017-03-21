@@ -44,6 +44,8 @@ class User(db.Model):
     def can(self,permissions):
         if self.role is not None and (self.role.permissions & permissions == permissions):
             return True
+        else:
+            return False
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
