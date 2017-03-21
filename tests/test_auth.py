@@ -1,6 +1,6 @@
 import unittest
-from app import create_app,db,Permission
-from app.models import User,Role
+from app import create_app,db
+from app.models import User,Role,Permission
 
 #class UserModelTestCase(unittest.TestCase):
     #def test_pssword_setter(self):
