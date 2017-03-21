@@ -26,5 +26,5 @@ class UserRoleTestCase(unittest.TestCase):
         u.role_id = 2
         db.session.add(u)
         db.session.commit()
-        self.assertTrue(User.can(Permission.CREATE_TASK))
+        self.assertTrue(u.can(Permission.CREATE_TASK))
 
