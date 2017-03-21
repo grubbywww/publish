@@ -22,7 +22,7 @@ class Role(db.Model):
         roles = {
             'Exector': (Permission.CREATE_TASK|Permission.RELEASE_TASK|Permission.CHECK_TASK),
             'Auditor': (Permission.CREATE_TASK|Permission.VERIFY_TASK|Permission.RELEASE_TASK|Permission.CHECK_TASK),
-            'Observer': (CHECK_TASK),
+            'Observer': (Permission.CHECK_TASK),
             'Admin': (Permission.CREATE_OPERATOR|Permission.CHECK_RESOURCE|Permission.APPLICATION_RESOURCE|Permission.CREATE_APPLICATION)
         }
         for r in roles:
