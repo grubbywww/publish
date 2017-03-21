@@ -41,6 +41,9 @@ class User(db.Model):
     last_seen = db.Column(db.DateTime)
     posts = db.relationship('Post',backref = 'author',lazy = 'dynamic')
     role_id = db.Column(db.Integer,db.ForeignKey('role.id'))
+    def can(self,permissions):
+        if self.role is not None and (self.role.permissions & permissions == permissions):
+            return True
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
