@@ -42,12 +42,9 @@ class User(db.Model):
     posts = db.relationship('Post',backref = 'author',lazy = 'dynamic')
     role_id = db.Column(db.Integer,db.ForeignKey('role.id'))
     def can(self,permissions):
-        try:
-            if self.role is not None and (self.role.permissions & permissions == permissions):
-                return True
-            else:
-                return False
-        except:
+        if self.role is not None and (self.role.permissions & permissions == permissions):
+            return True
+        else:
             return False
     @property
     def password(self):
