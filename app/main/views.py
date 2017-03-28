@@ -11,5 +11,6 @@ def index():
     #u = User.query.filter_by(nickname = 'jonhson').first()
     #c = u.posts.all()
     #c = {'name':"susan"}
-    name = request.cookies.get('cookie_for_op_platform')
-    return render_template("index.html",name = name)
+    resp = make_response(render_template("index.html"))
+    resp.set_cookie('name', 'the username')
+    return resp
