@@ -23,7 +23,7 @@ class UserRoleTestCase(unittest.TestCase):
         self.app_context.pop()
     def test_role(self):
         u = User(nickname = 'susan').query.first()
-        u.role_id = 2
+        u.role_id = 3
         db.session.add(u)
         db.session.commit()
         self.assertTrue(u.can(Permission.CREATE_TASK))
