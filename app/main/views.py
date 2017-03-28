@@ -6,7 +6,7 @@ from .. import db
 from ..models import User,Post
 
 @main.before_app_request
-def before_app_request():
+def before_request():
     response = make_response()
     response.set_cookie('cname','test')
 
