@@ -5,10 +5,6 @@ from . import main
 from .. import db
 from ..models import User,Post
 
-@main.before_app_request
-def before_request():
-    response = make_response(request.cookies['cname'])
-    response.set_cookie('cname','test')
 
 @main.route('/',methods=['GET','POST'])
 @login_required
@@ -16,6 +12,7 @@ def index():
     #u = User.query.filter_by(nickname = 'jonhson').first()
     #c = u.posts.all()
     #c = {'name':"susan"}
-
+    response = make_response()
+    response.set_cookie('cname','test')
     name = request.cookies.get('cname')
     return render_template("index.html",name = name)
