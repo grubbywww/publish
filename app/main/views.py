@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template,session,redirect,url_for,request,g
+from flask import render_template,session,redirect,url_for,request,g,make_response
 from flask.ext.login import logout_user,login_required
 from . import main
 from .. import db
